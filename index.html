@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>TOPIKIMCHI - 한국어 초성 맞추기 | Trò chơi đoán chữ Hàn Quốc</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- 시작 화면 팝업 -->
+    <div id="start-popup" class="popup-overlay">
+      <div class="popup-content start-popup-content">
+        <div class="popup-header">
+          <h3>TOPIKIMCHI - 한국어 초성 맞추기 게임</h3>
+        </div>
+        <div class="popup-body">
+          <div class="vietnam-star">★</div>
+          <h2>Trò chơi đoán âm tiết đầu tiếng Hàn</h2>
+          <p class="start-desc">
+            베트남어를 사용하는 학습자를 위한 한국어 초성 맞추기 게임입니다.
+          </p>
+          <p class="start-desc">
+            Trò chơi đoán âm tiết đầu tiếng Hàn dành cho người học sử dụng tiếng
+            Việt.
+          </p>
+          <p class="game-rules">
+            - 제한 시간은 5분입니다 / Thời gian giới hạn là 5 phút<br />
+            - 힌트 사용 시 1점, 미사용 시 2점 / Sử dụng gợi ý: 1 điểm, không sử
+            dụng: 2 điểm<br />
+            - 정답을 맞추면 예문이 표시됩니다 / Câu ví dụ sẽ hiển thị khi bạn
+            trả lời đúng
+          </p>
+        </div>
+        <div class="popup-footer">
+          <button id="start-game-button">
+            게임 시작하기 / Bắt đầu trò chơi
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 게임 메인 화면 -->
+    <div class="game-container hidden" id="game-container">
+      <div class="vietnam-star">★</div>
+      <h1>TOPIKIMCHI - 한국어 초성 맞추기 게임</h1>
+      <h2>Trò chơi đoán âm tiết đầu tiếng Hàn</h2>
+
+      <div class="timer-container">
+        <div id="timer-display">05:00</div>
+        <div class="timer-label">Thời gian / 시간</div>
+      </div>
+
+      <div class="word-section">
+        <div id="initial-sound-display"><!-- 초성이 표시됨 --></div>
+        <div id="topic-display"><!-- 주제가 표시됨 --></div>
+        <div id="hint-button-container">
+          <button id="hint-button">힌트 보기 / Xem gợi ý</button>
+          <div id="hint-display" class="hidden"></div>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <input
+          type="text"
+          id="answer-input"
+          placeholder="정답 입력 / Nhập câu trả lời"
+        />
+        <button id="submit-button">확인 / Kiểm tra</button>
+      </div>
+
+      <div class="result-section">
+        <div id="result-message"></div>
+        <div id="score-display">점수 / Điểm: 0</div>
+      </div>
+
+      <div class="control-section">
+        <button id="next-button">다음 단어 / Từ tiếp theo</button>
+        <button id="reset-button">게임 재시작 / Bắt đầu lại</button>
+      </div>
+    </div>
+
+    <!-- 예문 팝업 -->
+    <div id="example-popup" class="popup-overlay hidden">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>정답 / Đáp án: <span id="popup-word"></span></h3>
+          <button id="close-popup">×</button>
+        </div>
+        <div class="popup-body">
+          <div class="example-section">
+            <p class="example-label">한국어 예문 / Câu ví dụ tiếng Hàn:</p>
+            <p id="korean-example"></p>
+          </div>
+          <div class="example-section">
+            <p class="example-label">베트남어 예문 / Câu ví dụ tiếng Việt:</p>
+            <p id="vietnamese-example"></p>
+          </div>
+        </div>
+        <div class="popup-footer">
+          <button id="continue-button">계속하기 / Tiếp tục</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 타임오버 팝업 -->
+    <div id="timeover-popup" class="popup-overlay hidden">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>시간 종료! / Hết giờ!</h3>
+        </div>
+        <div class="popup-body">
+          <div class="vietnam-star">★</div>
+          <p>최종 점수 / Điểm cuối cùng:</p>
+          <div id="final-score">0</div>
+          <p id="correct-count">맞힌 단어: 0개 / Số từ đúng: 0</p>
+        </div>
+        <div class="popup-footer">
+          <button id="restart-button">다시 시작 / Bắt đầu lại</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 단어 데이터를 먼저 로드 -->
+    <script src="words.js"></script>
+    <!-- 게임 로직 로드 -->
+    <script src="game.js"></script>
+  </body>
+</html>
